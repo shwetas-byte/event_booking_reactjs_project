@@ -1,4 +1,8 @@
 import myImg from '../image/bg1.png'
+import wedding from '../image/wed_day.png'
+import music  from '../image/concert.png'
+import corporate from '../image/cor.png'
+import dinning from '../image/din_day.png'
 import { NavLink } from 'react-router-dom'
 import { GiDiamondRing } from "react-icons/gi";
 import { PiCheersBold } from "react-icons/pi";
@@ -10,6 +14,8 @@ import { MdSportsSoccer } from "react-icons/md";
 import { MdOutlineHiking } from "react-icons/md";
 import { MdOutlineColorLens } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa";
+import { FaMusic } from "react-icons/fa";
 export function Home() {
   let category=[
     {icons:<GiDiamondRing/>,value:'Weddings'},
@@ -22,6 +28,40 @@ export function Home() {
     // {icons:<MdOutlineHiking/>,value:'Adventure'},
     // {icons:<MdOutlineColorLens/>,value:'Workshops'},
     // {icons:<FaPeopleGroup/>,value:'Family'},
+  ]
+
+  let experience=[
+    {
+      number:'01',
+     icon:<GiDiamondRing/>,
+     category:"Wedding Experience",
+     title:"Make your dream wedding a timeless reality.",
+     image:wedding
+    },
+
+    {
+      number:'02',
+      icon:<FaMusic/>,
+      category:"Luxury Concert",
+      title:"Live the rhythm. Feel the moment.",
+      image:music
+    },
+
+    {
+      number:'03',
+      icon:<MdBusinessCenter/>,
+      category:"Corporate Summit",
+      title:"Inspire ideas. Drive the future.",
+      image:corporate
+    },
+
+    {
+      number:'04',
+      icon:< GiHotMeal/>,
+      category:"Fine Dining Experience",
+      title:"Savor unforgettable gourmet evenings.",
+      image:dinning
+    }
   ]
  
   return (
@@ -36,6 +76,8 @@ export function Home() {
 
 
         </div>
+
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#121219]"></div>
         <div className='relative z-10   flex-col justify-start pt-40 pl-20 min-h-screen'>
           <h1 className='flex items-center gap-2 text-pink-500 font-medium  '>
             <span 
@@ -85,7 +127,7 @@ export function Home() {
        
         
       </section>
-       <div className='bg-zinc-950 pb-20 w-full'>
+       <div className='bg-zinc-950 pb-10 w-full'>
           <h1 className='text-center text-pink-400 pt-10 text-2xl'>Browse By Category</h1>
           <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
               <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
@@ -109,7 +151,60 @@ export function Home() {
           </div>
           
         </div>
+
+
+        <div className='bg-zinc-950 pb-20 w-full'>
+
+          <h1 className='text-center text-pink-400 pt-10 text-2xl'>Featured Experiences</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Experience Life's</span>  Finest Ocassions</h1>
+
+          <div className='pl-20 pt-15 pr-10 space-y-8'>
+            {
+              experience.map((e,index)=>(
+                <div key={e.number}>
+                  <div className={`grid grid-cols-2 gap-10 items-center ${index%2!==0?"[&>*:first-child]:order-2":""}`}>
+
+                    <div className='h-[250px] group relative overflow-hidden rounded-3xl'>
+
+                      <img src={e.image} alt={e.category} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ' />
+
+                      <div className='absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
+
+                    </div>
+
+                    <div className='relative'>
+
+                      <div className='flex items-center gap-2 text-[#E07BA8] mb-5'>
+                        <span className='text-2xl'>{e.icon}</span>
+                        <span className='text-lg'>{e.category}</span>
+                      </div>
+
+                      <h2 className='text-white text-4xl font-semibold leading-tight max-w-md'> {e.title}</h2>
+
+                      <button className='group flex items-center gap-2 mt-8 text-[#E07BA8]'> View Details <FaArrowRight className='transition-transform duration-300 group-hover:translate-x-1 group:hover:-translate-y-1'/></button>
+
+                      <span className='absolute right-0 -bottom-6 text-8xl font-bold text-pink-500/20'> {e.number}</span>
+
+                    </div>
+
+                  </div>
+                </div>
+              ))
+            }
+
+          </div>
+          
+        </div>
       
     </>
   )
 }
+ 
