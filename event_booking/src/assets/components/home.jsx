@@ -3,6 +3,11 @@ import wedding from '../image/wed_day.png'
 import music  from '../image/concert.png'
 import corporate from '../image/cor.png'
 import dinning from '../image/din_day.png'
+import trend1 from '../image/trend1.png'
+import trend2 from '../image/trend2.png'
+import trend3 from '../image/trend3.png'
+
+
 import { NavLink } from 'react-router-dom'
 import { GiDiamondRing } from "react-icons/gi";
 import { PiCheersBold } from "react-icons/pi";
@@ -16,6 +21,11 @@ import { MdOutlineColorLens } from "react-icons/md";
 import { FaPeopleGroup } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa";
 import { FaMusic } from "react-icons/fa";
+import { IoCalendarOutline } from "react-icons/io5";
+import { IoMdTime } from "react-icons/io";
+import { IoLocationOutline } from "react-icons/io5";
+import { FaGlassMartiniAlt } from "react-icons/fa";
+import { GiDrumKit } from "react-icons/gi";
 export function Home() {
   let category=[
     {icons:<GiDiamondRing/>,value:'Weddings'},
@@ -61,6 +71,35 @@ export function Home() {
       category:"Fine Dining Experience",
       title:"Savor unforgettable gourmet evenings.",
       image:dinning
+    }
+  ]
+
+  let trending=[
+    {
+      title:"Midnight Glow",
+      category:"Live Concert",
+      date:"Sat, 12 Oct",
+      time:"10:00 PM Onwards",
+      venue:"The Grand Arena, Mumbai",
+      image:trend1
+    },
+    {
+      title:"Neon Summer Rave",
+      category:"Nightlife",
+      date:"Fri, 18 Oct",
+      time:"9:00 PM Onwards",
+      venue:"Warehouse, Mumbai",
+      icon:<FaGlassMartiniAlt/>,
+      image:trend2
+    },
+    {
+      title:"Indie Rock Nights",
+      category:"Live Band",
+      date:"Sun, 20 Oct",
+      time:"7:30 PM Onwards",
+      venue:"Mercury Lounge, Mumbai",
+      icon:<GiDrumKit/>,
+      image:trend3
     }
   ]
  
@@ -202,6 +241,103 @@ export function Home() {
 
           </div>
           
+        </div>
+
+        <div className='bg-zinc-950 pb-20 w-full'>
+
+          <h1 className='text-center text-pink-400  text-2xl'>What's Hot Right Now</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Trending Events</span>  Near You</h1>
+
+
+          <div className="pl-20 pr-15 pt-15 grid grid-cols-2 gap-6">
+
+  
+      {trending.slice(0, 1).map((e) => (
+        <div className="relative h-[620px] rounded-3xl overflow-hidden group" >
+          <img src={e.image} alt={e.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
+
+          
+          <div className="absolute inset-0 flex flex-col justify-end p-8">
+
+            <p className="text-[#E07BA8] items-center gap-2 flex text-lg  mb-2">
+              <FaMusic/>{e.category}
+            </p>
+
+            <h2 className="text-white text-5xl flex  mb-4">
+              {e.title}
+            </h2>
+
+            <p className="text-white/70 flex  items-center gap-2 text-sm">
+              <IoCalendarOutline/> {e.date}  | <IoMdTime />{e.time}
+            </p>
+
+            <p className="text-white/60 flex gap-2 pt-2 text-sm mt-1">
+            <IoLocationOutline/>  {e.venue}
+            </p>
+
+            <button className="text-[#E07BA8] flex items-center gap-2 mt-5 w-fit">
+              View Experience
+              <FaArrowRight />
+            </button>
+
+          </div>
+        </div>
+      ))}
+
+      <div className="grid grid-rows-2 gap-6">
+
+        {trending.slice(1).map((e) => (
+          <div className="grid grid-cols-2 h-[297px] rounded-3xl overflow-hidden bg-[#111114] group">
+
+          
+            <div className="relative overflow-hidden">
+              <img  src={e.image}  alt={e.title}  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"  />
+            </div>
+
+
+            <div className="relative flex flex-col justify-center p-7">
+
+              <p className="text-[#E07BA8] items-center flex gap-2 text-lg mb-3">
+              {e.icon} {e.category}
+              </p>
+
+              <h2 className="text-white text-3xl font-serif leading-tight mb-4">
+                {e.title}
+              </h2>
+
+              <p className="text-white/70 flex gap-2 items-center text-xs mb-1">
+              <IoCalendarOutline/>  {e.date} | <IoMdTime /> {e.time}
+              </p>
+
+              <p className="text-white/50 flex gap-2 items-center text-xs mb-5">
+              <IoLocationOutline/>   {e.venue}
+              </p>
+
+              <button className="text-[#E07BA8] flex items-center gap-2 text-sm w-fit">
+                View Experience  <FaArrowRight />
+              </button>
+
+            </div>
+
+          </div>
+        ))}
+
+      </div>
+
+    </div>
+
+
         </div>
       
     </>
