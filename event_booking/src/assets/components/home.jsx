@@ -26,6 +26,9 @@ import { IoMdTime } from "react-icons/io";
 import { IoLocationOutline } from "react-icons/io5";
 import { FaGlassMartiniAlt } from "react-icons/fa";
 import { GiDrumKit } from "react-icons/gi";
+import { HiOutlineTicket } from "react-icons/hi2";
+import { RiSearchAi3Line } from "react-icons/ri";
+import { BsStars } from "react-icons/bs";
 export function Home() {
   let category=[
     {icons:<GiDiamondRing/>,value:'Weddings'},
@@ -103,6 +106,29 @@ export function Home() {
     }
   ]
  
+  let steps=[
+    {
+      number: '01',
+      icon:<RiSearchAi3Line/>,
+      title:"Discover",
+      description:"Explore curated events that match your interests and mood."
+
+    },
+    {
+      number: '02',
+      icon:<HiOutlineTicket/>,
+      title:"Book",
+      description:"Choose your perfect event and reserve your spot effortlessly."
+
+    },
+    {
+      number: '03',
+      icon:<BsStars/>,
+      title:"Experience",
+      description:"Sow up, enjoy the moment, and create unforgettable memories."
+
+    }
+  ]
   return (
     <>
       <section className='relative min-h-screen w-full  bg-[#0B030A]'>
@@ -336,6 +362,48 @@ export function Home() {
       </div>
 
     </div>
+
+
+        </div>
+
+        <div className='bg-zinc-950 pb-20 w-full'>
+
+          <h1 className='text-center text-pink-400  text-2xl'>How IT Works</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Your Event Experience,</span>  Simplified</h1>
+
+          <div className=' relative pt-10'>
+            <div className='absolute  top-32 left-[20%] h-px right-[21%] bg-white/10'></div>
+
+            <div className='relative z-10 flex justify-between'>
+              {
+                steps.map((e)=>(
+                  <div className='flex-1 text-center '>
+
+                    <p className=' text-9xl font-semibold mb-[-75px] text-[#E07BA8]/60
+             [mask-image:linear-gradient(to_bottom,black_0%,transparent_100%)]
+             [-webkit-mask-image:linear-gradient(to_bottom,black_0%,transparent_100%)]'>{e.number}</p>
+
+                    <div className='relative mx-auto w-16 h-16    flex items-center justify-center mb-7' > <span className='text-[#E07BA8] text-4xl'> {e.icon}</span>
+                    </div>
+
+                    <h3 className='text-white text-2xl font-semibold mb-3'>{e.title}</h3>
+
+                    <p className='text-zinc-400 texr-sm leading-6 max-w-[250px] mx-auto'> {e.description}</p>
+
+                  </div>
+                ))
+              }
+            </div>
+            
+          </div>
 
 
         </div>
