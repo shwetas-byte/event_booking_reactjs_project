@@ -6,6 +6,12 @@ import dinning from '../image/din_day.png'
 import trend1 from '../image/trend1.png'
 import trend2 from '../image/trend2.png'
 import trend3 from '../image/trend3.png'
+import up1 from '../image/up1.png'
+import up2 from '../image/up2.png'
+import up3 from '../image/up3.png'
+import g1 from '../image/girl1.jpg'
+import g2 from '../image/girl2.jpg'
+import b1 from '../image/boy1.jpg'
 
 
 import { NavLink } from 'react-router-dom'
@@ -29,6 +35,12 @@ import { GiDrumKit } from "react-icons/gi";
 import { HiOutlineTicket } from "react-icons/hi2";
 import { RiSearchAi3Line } from "react-icons/ri";
 import { BsStars } from "react-icons/bs";
+import { LiaUserFriendsSolid } from "react-icons/lia";
+import { TbHandClick } from "react-icons/tb";
+import { GoShieldCheck } from "react-icons/go";
+import { TbUserHeart } from "react-icons/tb";
+import { RiDoubleQuotesL } from "react-icons/ri";
+
 export function Home() {
   let category=[
     {icons:<GiDiamondRing/>,value:'Weddings'},
@@ -129,6 +141,87 @@ export function Home() {
 
     }
   ]
+
+  let choose=[
+    {
+      title:"Curated Experiences",
+      description:"Handpicked events designed around quality, atmosphere and memorable moments.",
+      icon:<LiaUserFriendsSolid/>
+    },
+    {
+      title:"Effortless Booking",
+      description:"A seamless experience from descovering an event to securing your place.",
+      icon:<TbHandClick/>
+    },
+    {
+      title:"Trusted & Transparent",
+      description:"Clear event information, reliable details and a booking experience you can trust.",
+      icon:<GoShieldCheck/>
+    },
+    {
+      title:"Moments That Matter",
+      description:"Find experiences that become stories worth remembering.",
+      icon:<TbUserHeart/>
+    }
+  ]
+
+  let upcoming=[
+    {
+      image:up1,
+      category:"Music",
+      title:"Midnight Music Festival",
+      description:"Experience an unforgettable night of live music, art installations, and premium hospitality under the stars.",
+      location:'Bhopal',
+      date:"24",
+      month:"AUG"
+    },
+    {
+      image:up2,
+      category:"Workshop",
+      title:"Creative Art Workshop",
+      description:"Ignite your creativity with hands-on sessions led by renowned contemporary artists in an inspiring setting.",
+      location:'Indore',
+      date:"02",
+      month:"SEP"   
+    },
+    {
+      image:up3,
+      category:"Adventure",
+      title:"Adventure Weekend",
+      description:"Embark on curated outdoor experiences, including guided treks, exclusive camping, and wellness activities.",
+      location:'Pachmarhi',
+      date:"15",
+      month:"SEP"
+    }
+ ]
+
+ let test=[
+  {
+    id:'2',
+    name:'Arav Sharma',
+    role:'Adventure Seeker',
+    image:b1,
+    review:"From start to finish, everything was smooth and professional. I'll definitely be using Evora for all my future plqns. "
+
+  },
+  {
+    id:'1',
+    name:'Ananya Mishra',
+    role:'Music Enthusiast',
+    image:g1,
+    review:"Evora made finding and booking events so seamless. The experience was absolutely incredible!"
+
+  },
+  {
+    id:'3',
+    name:'Meera Iyer',
+    role:'Art & Culture Lover',
+    image:g2,
+    review:"I discovered amazing events I never knew about. Evora truly brings people closer to experiences."
+
+  }
+ ]
+
   return (
     <>
       <section className='relative min-h-screen w-full  bg-[#0B030A]'>
@@ -407,7 +500,193 @@ export function Home() {
 
 
         </div>
+
+
+        <div className='bg-zinc-950 pb-20 w-full'>
+
+          <h1 className='text-center text-pink-400  text-2xl'>Why Evora</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>More Than Just a </span>  Booking</h1>
+          <div className='grid pt-15 pl-20 grid-cols-2 gap-20'>
+
+            <div className='flex flex-col justify-center'>
+
+              <p className='text-zinc-400 leading-7 text-lg leading-5 max-w-md'>
+                Thoughtfully curated experiences, <br /> effortless booking, and <br /> moments worth remembering.
+              </p>
+
+              <h3 className='text-white text-6xl font-serif leading-tight mt-16'>
+                DISCOVER <br /> THE <br />
+                <span className='text-[#E07BA8]'>
+                  EXTRAORDINARY
+                
+                </span> 
+
+              </h3>
+
+            </div>
+
+            <div className='pr-15 pt-5'>
+              {
+              choose.map((e,index)=>(
+                <div className='group border-b  border-white/10 py-5 first:border-t'>
+                  <div className='flex items-start gap-6'>
+
+                    <span className='text-[#E07BA8]/40 text-lg font-medium pt-1'>
+                      0{index+1}
+                    </span>
+
+                    <div className='w-px h-10 bg-white/10 mt-0.5'></div>
+
+                    <div className='text-[#E07BA8] text-4xl pt-1 transition-transform duration-300 group-hover:scale-110'>
+                      {e.icon}
+                    </div>
+
+                    <div>
+                      <h4 className='text-white text-xl font-medium mb-2'>
+                        {e.title}
+                      </h4>
+
+                      <p className='text-zinc-500 text-sm leading-6 max-w-md'>
+                        {e.description}
+                      </p>
+                    </div>
+
+                  </div>
+                  
+
+                </div>
+              ))
+            }
+            </div>
+          </div>
+
+
+        </div>
+
+        <div className='bg-zinc-950 pb-20 w-full '>
+          <h1 className='text-center text-pink-400  text-2xl'>Upcoming Events</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Events Worth Waiting For </span>  </h1>
+
+          <div className=' pl-20 pr-15 pt-10 border-white/10'>
+            {
+              upcoming.map((e)=>(
+                <div className='group flex gap-10   py-3 border-b last:border-b-0 border-white/10'>
+
+                  <div className='w-110 h-40 overflow-hidden rounded-xl'>
+                    <img src={e.image} alt={e.title} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105' />
+                  </div>
+
+                  <div className='flex flex-col justify-center pl-8'>
+                    <p className='text-lg text-[#B65C75] mb-2'>
+                      {e.category}
+                    </p>
+
+                    <h3 className='text-3xl font-serif text-white mb-3'>
+                      {e.title}
+                    </h3>
+
+                    <p className='text-sm text-white/50 mb-2 max-w-lg'> 
+                      {e.description}
+                    </p>
+
+                    <p className='text-sm flex justify-between items-center text-white/90 mb-2'>
+                      <span className='flex gap-1 items-center'>
+                        <IoLocationOutline className='text-[#B65C75]'/> {e.location}
+                      </span>
+                      <span className='text-[#B65C75] border-b  flex gap-2 items-center '>View Details <FaArrowRight/></span>
+                    </p>
+                  </div>
+
+                  <div className='pl-20 flex flex-col items-center justify-center border-l border-white/10'>
+                    <span className='text-6xl  text-[#B65C75]'>
+                      {e.date}
+                    </span>
+
+                    <span className='text-lg text-white'>
+                      {e.month}
+                    </span>
+
+                  </div>
+                  
+                </div>
+              ))
+            }
+
+          </div>
+
+          <div className='flex justify-center mt-10'>
+            <button className='border border-[#B65C75] text-[#B65C75] px-8 py-3 rounded-2xl hover:bg-[#B65C75] hover:text-black transition duration-300'>View All Events</button>
+          </div>
+        </div>
+
+        <div className='bg-zinc-950 pb-20 w-full'>
+          <h1 className='text-center text-pink-400  text-2xl'>Testimonials</h1>
+          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Loved by </span> Thousands,<span className='text-white mb-3'> Trusted for </span> Moments.  </h1>
+
+          <p className='text-sm text-white/50 text-center pt-5 tracking-wider'>Real stories from real people who've discovered unforgettable <br />experiences with Evora.</p>
+
+          <div className='grid grid-cols-3 gap-8 pt-10 pl-20 pr-15'>
+            {
+              test.map((e)=>(
+                <div className='bg-[#21191D]  border border-white/10 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 hover:border-[#E07BA8] hover:shadow-[0_8px_25px_rgba(224,123,168,0.25)]'>
+
+                  <div className='text-[#E07BA8] text-6xl  mb-6'><RiDoubleQuotesL/></div>
+
+                  <p className='h-18 text-white/80 max-w-sm text-base leading-7 mb-8'>{e.review}</p>
+
+                  <div className='border-b border-white/10'></div>
+
+                  <div className='flex items-center pt-6 gap-4'>
+                    <img src={e.image} alt={e.name} className='w-12 h-12 rounded-full object cover' />
+
+                    <div className=''>
+                      <h4 className='text-white font-medium'>{e.name}</h4>
+                      <p className='text-[#E07BA8] text-sm'>{e.role}</p>
+                    </div>
+                    
+                  </div>
+                  <div className='flex pl-16 text-2xl gap-1 '>
+                      <span className="text-[#E07BA8]">★</span>
+                      <span className="text-[#E07BA8]">★</span>
+                      <span className="text-[#E07BA8]">★</span>
+                      <span className="text-[#E07BA8]">★</span>
+                      <span className="text-[#E07BA8]">★</span>
+                    </div>
+
+
+
+                </div>
+              ))
+            }
+          </div>
+
+        </div>
       
+
     </>
   )
 }
