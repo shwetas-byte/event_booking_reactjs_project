@@ -19,6 +19,7 @@ function App(){
       <Routes>
         <Route path='/' element={<PublicLayout/>}>
           <Route index element={<Home/>}/>
+          <Route path='/home' element={<Home/>}/>
           <Route path='/explore' element={<Explore_events/>}/>
           <Route path='/about' element={<About/>}/>
           <Route path='/contact' element={<Contact/>}/>

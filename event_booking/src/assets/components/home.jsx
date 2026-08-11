@@ -224,6 +224,7 @@ export function Home() {
 
   return (
     <>
+      {/* Hero Section */}
       <section className='relative min-h-screen w-full  bg-[#0B030A]'>
         <img 
           src={myImg} 
@@ -285,6 +286,8 @@ export function Home() {
        
         
       </section>
+
+      {/* Browse By Category */}
        <div className='bg-zinc-950 pb-10 w-full'>
           <h1 className='text-center text-pink-400 pt-10 text-2xl'>Browse By Category</h1>
           <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
@@ -310,7 +313,7 @@ export function Home() {
           
         </div>
 
-
+      {/* Featured Experiences */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
           <h1 className='text-center text-pink-400 pt-10 text-2xl'>Featured Experiences</h1>
@@ -361,7 +364,8 @@ export function Home() {
           </div>
           
         </div>
-
+        
+        {/* Trending */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
           <h1 className='text-center text-pink-400  text-2xl'>What's Hot Right Now</h1>
@@ -459,6 +463,7 @@ export function Home() {
 
         </div>
 
+        {/* Work Flow */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
           <h1 className='text-center text-pink-400  text-2xl'>How IT Works</h1>
@@ -501,7 +506,7 @@ export function Home() {
 
         </div>
 
-
+        {/* Choose */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
           <h1 className='text-center text-pink-400  text-2xl'>Why Evora</h1>
@@ -571,6 +576,7 @@ export function Home() {
 
         </div>
 
+        {/* Upcoming */}
         <div className='bg-zinc-950 pb-20 w-full '>
           <h1 className='text-center text-pink-400  text-2xl'>Upcoming Events</h1>
           <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
@@ -635,6 +641,7 @@ export function Home() {
           </div>
         </div>
 
+        {/* Testimonial */}
         <div className='bg-zinc-950 pb-20 w-full'>
           <h1 className='text-center text-pink-400  text-2xl'>Testimonials</h1>
           <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
@@ -685,6 +692,28 @@ export function Home() {
           </div>
 
         </div>
+
+        {/* cta */}
+        <div className='bg-zinc-950 pb-20 w-full'>
+
+          <div className='relative p-5 max-w-5xl pb-13 mx-auto overflow-hidden rounded-3xl border transition-all duration-300 ease-out hover:-translate-y-2 hover:border-[#E07BA8]/70 hover:shadow-[0_12px_35px_rgba(224,123,168,0.15)] border-white/10 bg-[#111114]'>
+            <h1 className='text-6xl text-white text-center leading-tight'> Ready to Create <br /> <span className='text-[#E07BA8]'>Unforgettable</span>Moments?</h1>
+             <div class="flex items-center justify-center gap-3 my-2 ml-90 w-3xs">
+              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
+              
+              <span class="text-[#db2777] text-xs">✦</span>
+              
+              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+            </div>
+
+            <p className='text-white/60  text-center text-lg leading-7 tracking-wider pt-2'> Explore handpicked events and unique experiences <br /> crafted to make every moments extraordinary.</p>
+
+            <button className='bg-[#c43475] mt-9 rounded-2xl border border-white/20 mx-auto pl-8 pr-8 pt-3 pb-3 gap-2 justify-center text-white text-2xl  flex items-center transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E07BA8]/50 hover:shadow-[0_8px_25px_rgba(224,123,168,0.1)]'>Explore Events <FaArrowRight/></button>
+            
+          </div>
+        </div>
+
+
       
 
     </>
