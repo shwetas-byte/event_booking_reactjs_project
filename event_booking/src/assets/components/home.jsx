@@ -12,6 +12,8 @@ import up3 from '../image/up3.png'
 import g1 from '../image/girl1.jpg'
 import g2 from '../image/girl2.jpg'
 import b1 from '../image/boy1.jpg'
+import sports1 from '../image/sports1.png'
+
 
 
 import { NavLink } from 'react-router-dom'
@@ -40,6 +42,8 @@ import { TbHandClick } from "react-icons/tb";
 import { GoShieldCheck } from "react-icons/go";
 import { TbUserHeart } from "react-icons/tb";
 import { RiDoubleQuotesL } from "react-icons/ri";
+import { GiRunningShoe } from "react-icons/gi";
+
 
 export function Home() {
   let category=[
@@ -58,16 +62,17 @@ export function Home() {
   let experience=[
     {
       number:'01',
-     icon:<GiDiamondRing/>,
-     category:"Wedding Experience",
-     title:"Make your dream wedding a timeless reality.",
-     image:wedding
+     icon:<GiRunningShoe/>,
+     category:"Sports",
+     title:"Marathon with your city people.",
+     image:sports1,
+     
     },
 
     {
       number:'02',
       icon:<FaMusic/>,
-      category:"Luxury Concert",
+      category:"Music",
       title:"Live the rhythm. Feel the moment.",
       image:music
     },
@@ -75,7 +80,7 @@ export function Home() {
     {
       number:'03',
       icon:<MdBusinessCenter/>,
-      category:"Corporate Summit",
+      category:"Workshop",
       title:"Inspire ideas. Drive the future.",
       image:corporate
     },
@@ -83,8 +88,8 @@ export function Home() {
     {
       number:'04',
       icon:< GiHotMeal/>,
-      category:"Fine Dining Experience",
-      title:"Savor unforgettable gourmet evenings.",
+      category:"Food & Drinks",
+      title:"The Culinary Experience.",
       image:dinning
     }
   ]
@@ -92,30 +97,31 @@ export function Home() {
   let trending=[
     {
       title:"Midnight Glow",
-      category:"Live Concert",
-      date:"Sat, 12 Oct",
-      time:"10:00 PM Onwards",
-      venue:"The Grand Arena, Mumbai",
+      category:"Music",
+      date:"Sat, 12 SEP",
+      time:"7:00 PM Onwards",
+      venue:"Bhopal",
       image:trend1
     },
     {
-      title:"Neon Summer Rave",
+      title:"After Dark Sessions",
       category:"Nightlife",
-      date:"Fri, 18 Oct",
+      date:"Fri, 18 SEP",
       time:"9:00 PM Onwards",
-      venue:"Warehouse, Mumbai",
+      venue:"Indore",
       icon:<FaGlassMartiniAlt/>,
       image:trend2
     },
     {
-      title:"Indie Rock Nights",
-      category:"Live Band",
-      date:"Sun, 20 Oct",
-      time:"7:30 PM Onwards",
-      venue:"Mercury Lounge, Mumbai",
-      icon:<GiDrumKit/>,
-      image:trend3
-    }
+              
+              title:"Indie Rock Nights",
+              category:"Music",
+              date:"TUE, 20 Oct",
+              time:"7:30 PM Onwards",
+              venue:"Bhopal",
+              icon:<GiDrumKit/>,
+              image:trend3
+            }
   ]
  
   let steps=[
@@ -172,8 +178,8 @@ export function Home() {
       title:"Midnight Music Festival",
       description:"Experience an unforgettable night of live music, art installations, and premium hospitality under the stars.",
       location:'Bhopal',
-      date:"24",
-      month:"AUG"
+      date:"12",
+      month:"SEP"
     },
     {
       image:up2,
@@ -187,7 +193,7 @@ export function Home() {
     {
       image:up3,
       category:"Adventure",
-      title:"Adventure Weekend",
+      title:" Weekend Escape",
       description:"Embark on curated outdoor experiences, including guided treks, exclusive camping, and wellness activities.",
       location:'Pachmarhi',
       date:"15",

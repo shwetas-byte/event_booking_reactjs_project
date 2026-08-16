@@ -31,6 +31,8 @@ export function Login(){
     if(data.email!=logindata.email || data.password!=logindata.password){
         alert("User not found")
     }
+
+    localStorage.setItem('isLoggedIn','true')
     
     navigate('/book')
     console.log("navigate ho gya");

@@ -1,6 +1,6 @@
 import { Link, NavLink } from 'react-router-dom'
 import myImg from '../image/evora.png'
-export function Public_nav(){
+export default function Public_nav(){
     return(
         <>
             <nav className='z-50 bg-transparent h-19 fixed flex justify-between items-center w-full  px-8 bg-[#0F0C14] backdrop-blur-md border-b border-white/10'>
