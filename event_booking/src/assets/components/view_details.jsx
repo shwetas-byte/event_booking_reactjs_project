@@ -1,10 +1,12 @@
-import { Navigate, useParams } from "react-router-dom"
+import { Navigate, NavLink, useParams } from "react-router-dom"
 import {Events} from './explore_events'
 import {FaRegCalendarAlt} from 'react-icons/fa'
 import {FiClock, FiMapPin, FiUsers} from 'react-icons/fi'
 import { GiLargeDress } from "react-icons/gi";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { useState } from "react";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
+
 
 
 
@@ -17,8 +19,43 @@ export default function View_details(){
     const event= Events.find((item) => item.id===Number(id))
     console.log(id);
 
-    let[selectedDate,setSelectedDate]=useState('')
-    let [couples,setCouples]=useState(1);
+    const MONTHS_SHORT = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+const MONTHS_FULL = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+const firstAvailable = event.dates?.[0];
+const initialMonthIndex = firstAvailable
+  ? MONTHS_SHORT.indexOf(firstAvailable.month.substring(0, 3).toUpperCase())
+  : 0;
+
+const [calendarMonth, setCalendarMonth] = useState(
+  new Date(2026, initialMonthIndex, 1)
+);
+
+let [selectedDate, setSelectedDate] = useState(null);
+let [persons, setPersons] = useState(1);
+
+const pricePerPerson = event.price;
+const serviceFee = 500;
+const totalAmount = pricePerPerson * persons + serviceFee;
+
+const [isWishlisted, setIsWishlisted] = useState(() => {
+    const saved = JSON.parse(localStorage.getItem("wishlist")) || [];
+    return saved.some((item) => item.id === event.id);
+});
+
+const toggleWishlist = () => {
+    const saved = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+    if (isWishlisted) {
+        const updated = saved.filter((item) => item.id !== event.id);
+        localStorage.setItem("wishlist", JSON.stringify(updated));
+        setIsWishlisted(false);
+    } else {
+        const updated = [...saved, event];
+        localStorage.setItem("wishlist", JSON.stringify(updated));
+        setIsWishlisted(true);
+    }
+};
    
     
     return(
@@ -339,8 +376,210 @@ export default function View_details(){
 
                     </div>
 
+                    {/* ================= RIGHT SIDE - BOOK YOUR SPOT ================= */}
+<div className="lg:sticky lg:top-24 h-fit">
+
+  <div className="bg-zinc-900/40 border border-[#E07BA8]/20 rounded-xl p-6">
+
+    <h2 className="text-white font-serif text-2xl flex items-center gap-2">
+      Book Your Spot
+      <span className="text-[#E07BA8] text-lg">✦</span>
+    </h2>
+
+    {/* Price */}
+    <p className="text-white/40 text-sm mt-5">Price Per Person</p>
+    <p className="text-[#E07BA8] text-3xl font-serif mt-1">
+      ₹ {event.price.toLocaleString("en-IN")}
+    </p>
+
+    {/* ================= CALENDAR ================= */}
+    <p className="text-white/40 text-sm mt-6 mb-3">Select Date</p>
+
+    <div className="border border-white/10 rounded-lg p-4">
+
+      <div className="flex items-center justify-between mb-4">
+
+        <button
+          onClick={() =>
+            setCalendarMonth(
+              new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() - 1, 1)
+            )
+          }
+          className="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-[#E07BA8] transition"
+        >
+          ←
+        </button>
+
+        <p className="text-white font-serif text-base">
+          {MONTHS_FULL[calendarMonth.getMonth()]} {calendarMonth.getFullYear()}
+        </p>
+
+        <button
+          onClick={() =>
+            setCalendarMonth(
+              new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 1)
+            )
+          }
+          className="w-7 h-7 flex items-center justify-center text-zinc-400 hover:text-[#E07BA8] transition"
+        >
+          →
+        </button>
+
+      </div>
+
+      <div className="grid grid-cols-7 mb-1">
+        {["SU", "MO", "TU", "WE", "TH", "FR", "SA"].map((d) => (
+          <div key={d} className="text-center text-[11px] text-zinc-500 py-1">
+            {d}
+          </div>
+        ))}
+      </div>
+
+      <div className="grid grid-cols-7 gap-y-1">
+
+        {Array.from({
+          length: new Date(calendarMonth.getFullYear(), calendarMonth.getMonth(), 1).getDay()
+        }).map((_, i) => (
+          <div key={`empty-${i}`} />
+        ))}
+
+        {Array.from({
+          length: new Date(calendarMonth.getFullYear(), calendarMonth.getMonth() + 1, 0).getDate()
+        }).map((_, i) => {
+
+          const day = i + 1;
+          const monthShort = MONTHS_SHORT[calendarMonth.getMonth()];
+          const year = calendarMonth.getFullYear();
+
+          const matchedDate = event.dates?.find(
+            (d) =>
+              Number(d.date) === day &&
+              d.month.substring(0, 3).toUpperCase() === monthShort &&
+              year === 2026
+          );
+
+          const isAvailable = Boolean(matchedDate);
+
+          const isSelected =
+            selectedDate &&
+            Number(selectedDate.date) === day &&
+            selectedDate.month === monthShort &&
+            year === 2026;
+
+          return (
+            <button
+              key={day}
+              disabled={!isAvailable}
+              onClick={() => {
+                if (!isAvailable) return;
+                setSelectedDate({ date: day, month: monthShort, day: matchedDate.day, year });
+              }}
+              className={`
+                relative h-9 flex items-center justify-center text-sm rounded-full transition
+                ${isAvailable
+                  ? "text-white hover:bg-[#B65C7A]/20 hover:text-[#E07BA8] cursor-pointer"
+                  : "text-zinc-700 cursor-not-allowed"}
+                ${isSelected ? "bg-[#B65C7A] text-white" : ""}
+              `}
+            >
+              {day}
+              {isAvailable && !isSelected && (
+                <span className="absolute bottom-0.5 w-1 h-1 rounded-full bg-[#E07BA8]"></span>
+              )}
+            </button>
+          );
+        })}
+
+      </div>
+
+    </div>
+
+    {/* ================= PERSONS COUNTER ================= */}
+    <p className="text-white/40 text-sm mt-6 mb-3">Select Number of Persons</p>
+
+    <div className="flex items-center gap-4">
+      <button
+        onClick={() => setPersons((c) => Math.max(1, c - 1))}
+        className="w-10 h-10 rounded-full bg-[#B65C7A] text-white text-lg flex items-center justify-center hover:bg-[#a34e6a] transition"
+      >
+        −
+      </button>
+
+      <span className="text-white text-lg w-6 text-center">{persons}</span>
+
+      <button
+        onClick={() => setPersons((c) => c + 1)}
+        className="w-10 h-10 rounded-full bg-[#B65C7A] text-white text-lg flex items-center justify-center hover:bg-[#a34e6a] transition"
+      >
+        +
+      </button>
+    </div>
+
+    {/* ================= PRICE BREAKDOWN ================= */}
+    <div className="mt-6 pt-4 border-t border-white/10 space-y-2 text-sm">
+
+      <div className="flex justify-between text-white/60">
+        <span>Price ({persons} Person{persons > 1 ? "s" : ""})</span>
+        <span>₹ {(event.price * persons).toLocaleString("en-IN")}</span>
+      </div>
+
+      <div className="flex justify-between text-white/60">
+        <span>Service Fee</span>
+        <span>₹ {serviceFee}</span>
+      </div>
+
+      <div className="flex justify-between text-white text-base pt-2 border-t border-white/10 mt-2">
+        <span>Total Amount</span>
+        <span className="text-[#E07BA8]">₹ {totalAmount.toLocaleString("en-IN")}</span>
+      </div>
+
+    </div>
+
+    {/* ================= BOOK NOW BUTTON ================= */}
+    <button
+      disabled={!selectedDate}
+      className={`
+        w-full mt-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition
+        ${selectedDate
+          ? "bg-[#DB5C86] text-white hover:bg-[#c14e76]"
+          : "bg-zinc-700 text-zinc-400 cursor-not-allowed"}
+      `}
+    >
+     <NavLink to={'/booking'}> Book Now →</NavLink>
+    </button>
+
+    {/* ================= ADD TO WISHLIST BUTTON ================= */}
+<button
+  onClick={toggleWishlist}
+  className={`
+    w-full mt-3 py-3 rounded-lg font-medium flex items-center justify-center gap-2 border transition
+    ${isWishlisted
+      ? "border-[#E07BA8] text-[#E07BA8] bg-[#E07BA8]/10"
+      : "border-white/20 text-white/70 hover:border-[#E07BA8]/50 hover:text-[#E07BA8]"}
+  `}
+>
+  {isWishlisted ? <FaHeart /> : <FaRegHeart />}
+  {isWishlisted ? "Added to Wishlist" : "Add to Wishlist"}
+</button>
+
+    <p className="text-center text-zinc-500 text-xs mt-3">🔒 Secure Booking</p>
+
+    <div className="flex items-start gap-3 mt-4 bg-zinc-900/60 border border-white/10 rounded-lg p-3">
+      <span className="text-[#E07BA8]">🛡️</span>
+      <p className="text-xs text-zinc-500 leading-5">
+        Free cancellation up to 48 hrs before the event.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
 
                     </div>
+
+
+                    
                     
 
                 </div>

@@ -26,15 +26,24 @@ export function Login(){
         alert("Please fill all the fields")
         return
     }
+
     let data=JSON.parse(localStorage.getItem('userdata'))
+
+    if(!data){
+        alert("No account found, please sign up first")
+        return
+    }
+
     console.log("data aa gya");
     if(data.email!=logindata.email || data.password!=logindata.password){
         alert("User not found")
+        return
     }
 
     localStorage.setItem('isLoggedIn','true')
-    
-    navigate('/book')
+    window.dispatchEvent(new Event("authChange"))
+
+    navigate('/')
     console.log("navigate ho gya");
     
     

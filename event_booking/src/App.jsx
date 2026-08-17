@@ -10,6 +10,8 @@ import View_details from "./assets/components/view_details";
 import My_bookings from "./assets/components/my_booking";
 import Wishlist from "./assets/components/wishlist";
 import Profile from "./assets/components/profile";
+import Booking from "./assets/components/booking";
+
 
 
 
@@ -29,9 +31,10 @@ function App() {
 
                 <Route path="/view/:id" element={<View_details />} />
 
-                <Route path="/book" element={<My_bookings />} />
-                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/my_book" element={<My_bookings />} />
+                <Route path="/wish" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/booking" element={<Booking />} />
 
             </Route>
 

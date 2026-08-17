@@ -51,11 +51,15 @@ export function Sign_up() {
     }
 
     localStorage.setItem("userdata", JSON.stringify(signdata));
+    localStorage.setItem("isLoggedIn", "true");
+    window.dispatchEvent(new Event("authChange"));
 
     // console.log("Everything valid");
     // console.log("Navigating...");
 
-    navigate("/book");
+    navigate("/");
+    console.log("Navigate hua");
+    
 }
 
     return (
