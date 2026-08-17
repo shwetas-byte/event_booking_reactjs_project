@@ -11,6 +11,7 @@ import My_bookings from "./assets/components/my_booking";
 import Wishlist from "./assets/components/wishlist";
 import Profile from "./assets/components/profile";
 import Booking from "./assets/components/booking";
+import Review from "./assets/components/review";
 
 
 
@@ -35,6 +36,7 @@ function App() {
                 <Route path="/wish" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/booking" element={<Booking />} />
+                <Route path="/review" element={<Review />} />
 
             </Route>
 

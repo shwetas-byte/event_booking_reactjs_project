@@ -1,4 +1,4 @@
-import { Navigate, NavLink, useParams } from "react-router-dom"
+import { Navigate, NavLink, useNavigate, useParams } from "react-router-dom"
 import {Events} from './explore_events'
 import {FaRegCalendarAlt} from 'react-icons/fa'
 import {FiClock, FiMapPin, FiUsers} from 'react-icons/fi'
@@ -31,6 +31,9 @@ const [calendarMonth, setCalendarMonth] = useState(
   new Date(2026, initialMonthIndex, 1)
 );
 
+const navigate = useNavigate();
+
+
 let [selectedDate, setSelectedDate] = useState(null);
 let [persons, setPersons] = useState(1);
 
@@ -56,6 +59,7 @@ const toggleWishlist = () => {
         setIsWishlisted(true);
     }
 };
+
    
     
     return(
@@ -536,17 +540,39 @@ const toggleWishlist = () => {
     </div>
 
     {/* ================= BOOK NOW BUTTON ================= */}
+    {/* console.log("BEFORE NAVIGATE");
+console.log("event =", event);
+console.log("selectedDate =", selectedDate); */}
     <button
-      disabled={!selectedDate}
-      className={`
-        w-full mt-6 py-3 rounded-lg font-medium flex items-center justify-center gap-2 transition
-        ${selectedDate
-          ? "bg-[#DB5C86] text-white hover:bg-[#c14e76]"
-          : "bg-zinc-700 text-zinc-400 cursor-not-allowed"}
-      `}
-    >
-     <NavLink to={'/booking'}> Book Now →</NavLink>
-    </button>
+  disabled={!selectedDate}
+  onClick={() => {
+    console.log("BEFORE NAVIGATE");
+    console.log("event =", event);
+    console.log("selectedDate =", selectedDate);
+    console.log("persons =", persons);
+
+    if (!selectedDate) return;
+
+    navigate("/booking", {
+      state: {
+        event,
+        selectedDate,
+        persons
+      }
+    });
+  }}
+  className={`
+    w-full mt-6 py-3 rounded-lg font-medium
+    flex items-center justify-center gap-2 transition
+    ${
+      selectedDate
+        ? "bg-[#DB5C86] text-white hover:bg-[#c14e76]"
+        : "bg-zinc-700 text-zinc-400 cursor-not-allowed"
+    }
+  `}
+>
+  Book Now →
+</button>
 
     {/* ================= ADD TO WISHLIST BUTTON ================= */}
 <button
