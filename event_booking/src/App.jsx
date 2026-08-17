@@ -29,7 +29,7 @@ function App() {
 
                 <Route path="/view/:id" element={<View_details />} />
 
-                <Route path="/my-bookings" element={<My_bookings />} />
+                <Route path="/book" element={<My_bookings />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
 
