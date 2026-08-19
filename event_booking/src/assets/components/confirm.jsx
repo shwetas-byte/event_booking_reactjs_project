@@ -69,90 +69,167 @@ export default function Confirma() {
 
     // ================= SAVE BOOKING =================
 
-    useEffect(() => {
+    // ================= SAVE BOOKING + NOTIFICATION =================
 
-        if (
-            !event ||
-            !selectedDate ||
-            !guestInfo ||
-            !bookingKey
-        ) {
-            return;
-        }
+useEffect(() => {
 
+    // ================= CHECK REQUIRED DATA =================
 
-        // Existing bookings
-        const existingBookings =
-            JSON.parse(
-                localStorage.getItem("myBookings")
-            ) || [];
+    if (
+        !event ||
+        !selectedDate ||
+        !guestInfo ||
+        !bookingKey
+    ) {
+        return;
+    }
 
 
-        // ================= CHECK DUPLICATE =================
+    // ================= EXISTING BOOKINGS =================
 
-        const alreadyExists = existingBookings.some(
-            (booking) =>
-                booking.bookingKey === bookingKey
-        );
-
-
-        // Agar same booking already save hai
-        if (alreadyExists) {
-            return;
-        }
+    const existingBookings =
+        JSON.parse(
+            localStorage.getItem("myBookings")
+        ) || [];
 
 
-        // ================= NEW BOOKING =================
+    // ================= CHECK DUPLICATE BOOKING =================
 
-        const newBooking = {
-
-            bookingKey: bookingKey,
-
-            bookingRef: bookingRef,
-
-            event: event,
-
-            selectedDate: selectedDate,
-
-            persons: guestCount,
-
-            guestInfo: guestInfo,
-
-            pricePerPerson: price,
-
-            serviceFee: serviceFee,
-
-            totalAmount: totalAmount,
-
-            status: "Confirmed",
-
-            bookedAt: new Date().toISOString()
-
-        };
+    const alreadyExists = existingBookings.some(
+        (booking) =>
+            booking.bookingKey === bookingKey
+    );
 
 
-        // ================= SAVE =================
+    // Agar booking already save hai
+    // toh dobara booking + notification nahi banegi
 
-        localStorage.setItem(
-            "myBookings",
-            JSON.stringify([
-                ...existingBookings,
-                newBooking
-            ])
-        );
+    if (alreadyExists) {
+        return;
+    }
 
 
-    }, [
-        bookingKey,
-        bookingRef,
-        event,
-        selectedDate,
-        guestInfo,
-        guestCount,
-        price,
-        serviceFee,
-        totalAmount
-    ]);
+    // ================= NEW BOOKING =================
+
+    const newBooking = {
+
+        bookingKey: bookingKey,
+
+        bookingRef: bookingRef,
+
+        event: event,
+
+        selectedDate: selectedDate,
+
+        persons: guestCount,
+
+        guestInfo: guestInfo,
+
+        pricePerPerson: price,
+
+        serviceFee: serviceFee,
+
+        totalAmount: totalAmount,
+
+        status: "Confirmed",
+
+        bookedAt: new Date().toISOString()
+
+    };
+
+
+    // ================= SAVE BOOKING =================
+
+    localStorage.setItem(
+        "myBookings",
+        JSON.stringify([
+            ...existingBookings,
+            newBooking
+        ])
+    );
+
+
+    // =================================================
+    // ================= NOTIFICATION ==================
+    // =================================================
+
+
+    // Existing notifications
+
+    const existingNotifications =
+        JSON.parse(
+            localStorage.getItem("notifications")
+        ) || [];
+
+
+    // ================= NEW NOTIFICATION =================
+
+    const newNotification = {
+
+        id: Date.now(),
+
+        type: "booking",
+
+        title: "Booking Confirmed",
+
+        message: `Your booking for ${event.title} has been confirmed.`,
+
+        eventId: event.id,
+
+        eventTitle: event.title,
+
+        bookingRef: bookingRef,
+
+        date: selectedDate,
+
+        guests: guestCount,
+
+        createdAt: new Date().toISOString(),
+
+        read: false
+
+    };
+
+
+    // ================= SAVE NOTIFICATION =================
+
+    localStorage.setItem(
+        "notifications",
+        JSON.stringify([
+            newNotification,
+            ...existingNotifications
+        ])
+    );
+
+
+    // ================= UPDATE NAVBAR =================
+
+    window.dispatchEvent(
+        new Event("notificationChange")
+    );
+
+
+}, [
+
+    bookingKey,
+
+    bookingRef,
+
+    event,
+
+    selectedDate,
+
+    guestInfo,
+
+    guestCount,
+
+    price,
+
+    serviceFee,
+
+    totalAmount
+
+]);
 
 
     return (

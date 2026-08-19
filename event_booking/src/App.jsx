@@ -14,6 +14,7 @@ import Booking from "./assets/components/booking";
 import Review from "./assets/components/review";
 import Confirma from "./assets/components/confirm";
 import Setting from "./assets/components/setting";
+import Notification from "./assets/components/notification";
 
 
 
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/review" element={<Review />} />
                 <Route path="/confirm" element={<Confirma />} />
                 <Route path="/settings" element={<Setting />} />
+                <Route path="/notification" element={<Notification />} />
 
             </Route>
 

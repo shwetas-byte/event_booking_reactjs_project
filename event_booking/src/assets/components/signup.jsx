@@ -10,57 +10,55 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
 
-
 export function Sign_up() {
-   let[signdata,setsigndata]= useState({})
-   
+    let [signdata, setsigndata] = useState({})
 
-   function change(e){
-    const{name,value}=e.target
-        setsigndata({...signdata,[name]:value})
+    function change(e) {
+        const { name, value } = e.target
+        setsigndata({ ...signdata, [name]: value })
+    }
 
-
-   }
-  let navigate= useNavigate()
+    let navigate = useNavigate()
 
     function submit(e) {
-    e.preventDefault();
+        e.preventDefault();
 
-    const { name, email, password, confirmPassword } = signdata;
+        const { name, email, password, confirmPassword } = signdata;
 
-    console.log("data:", signdata);
+        if (!name || !email || !password || !confirmPassword) {
+            alert("Please fill all fields");
+            return;
+        }
 
-    if (!name || !email || !password || !confirmPassword) {
-        alert("Please fill all fields");
-        return;
+        if (!email.includes("@")) {
+            alert("Please enter a valid email");
+            return;
+        }
+
+        if (password.length < 6) {
+            alert("Password must be at least 6 characters");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+        }
+
+        // sirf zaroori fields save karo, confirmPassword nahi
+        localStorage.setItem(
+            "userdata",
+            JSON.stringify({
+                name: name.trim(),
+                email: email.trim(),
+                password: password.trim()
+            })
+        );
+        localStorage.setItem("isLoggedIn", "true");
+        window.dispatchEvent(new Event("authChange"));
+
+        navigate("/");
     }
-
-    if (!email.includes("@")) {
-        alert("Please enter a valid email");
-        return;
-    }
-
-    if (password.length < 6) {
-        alert("Password must be at least 6 characters");
-        return;
-    }
-
-    if (password !== confirmPassword) {
-        alert("Passwords do not match");
-        return;
-    }
-
-    localStorage.setItem("userdata", JSON.stringify(signdata));
-    localStorage.setItem("isLoggedIn", "true");
-    window.dispatchEvent(new Event("authChange"));
-
-    // console.log("Everything valid");
-    // console.log("Navigating...");
-
-    navigate("/");
-    console.log("Navigate hua");
-    
-}
 
     return (
         <>
