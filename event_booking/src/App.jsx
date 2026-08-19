@@ -12,6 +12,7 @@ import Wishlist from "./assets/components/wishlist";
 import Profile from "./assets/components/profile";
 import Booking from "./assets/components/booking";
 import Review from "./assets/components/review";
+import Confirma from "./assets/components/confirm";
 
 
 
@@ -32,11 +33,12 @@ function App() {
 
                 <Route path="/view/:id" element={<View_details />} />
 
-                <Route path="/my_book" element={<My_bookings />} />
+                <Route path="/book" element={<My_bookings />} />
                 <Route path="/wish" element={<Wishlist />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/booking" element={<Booking />} />
                 <Route path="/review" element={<Review />} />
+                <Route path="/confirm" element={<Confirma />} />
 
             </Route>
 

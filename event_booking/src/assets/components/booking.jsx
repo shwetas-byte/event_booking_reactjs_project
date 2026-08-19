@@ -1,14 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import {
-    FiMapPin,
-    FiCalendar,
-    FiClock,
-    FiUsers,
-    FiInfo,
-    FiShield,
-    FiArrowRight,
-    FiLock
-} from "react-icons/fi";
+import { FiMapPin, FiCalendar, FiClock, FiUsers, FiInfo, FiShield, FiArrowRight, FiLock} from "react-icons/fi";
 import { useState } from "react";
 
 export default function Booking() {
@@ -104,24 +95,6 @@ export default function Booking() {
 
                             <div className="w-9 h-9 rounded-full border border-white/20 text-zinc-500 flex items-center justify-center text-sm">
                                 3
-                            </div>
-
-                            <span className="ml-3 text-zinc-500">
-                                Payment
-                            </span>
-
-                        </div>
-
-
-                        <div className="w-24 h-px bg-white/10 mx-5"></div>
-
-
-                        {/* STEP 4 */}
-
-                        <div className="flex items-center">
-
-                            <div className="w-9 h-9 rounded-full border border-white/20 text-zinc-500 flex items-center justify-center text-sm">
-                                4
                             </div>
 
                             <span className="ml-3 text-zinc-500">
