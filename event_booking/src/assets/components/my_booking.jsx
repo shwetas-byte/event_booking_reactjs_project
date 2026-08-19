@@ -6,7 +6,8 @@ import {
     FiArrowRight,
     FiFileText
 } from "react-icons/fi";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+
 
 export default function My_bookings() {
 
@@ -554,41 +555,7 @@ export default function My_bookings() {
                                                 </div>
 
 
-                                                {/* VIEW DETAILS */}
-
-                                                <button
-                                                    onClick={() =>
-                                                        navigate(
-                                                            "/booking-details",
-                                                            {
-                                                                state: {
-                                                                    booking
-                                                                }
-                                                            }
-                                                        )
-                                                    }
-                                                    className="
-                                                        flex
-                                                        items-center
-                                                        gap-2
-                                                        px-5
-                                                        py-3
-                                                        rounded-lg
-                                                        border
-                                                        border-[#B65C7A]/40
-                                                        text-[#E07BA8]
-                                                        text-sm
-                                                        hover:bg-[#B65C7A]/10
-                                                        hover:border-[#B65C7A]
-                                                        transition
-                                                    "
-                                                >
-
-                                                    View Details
-
-                                                    <FiArrowRight className="w-4 h-4" />
-
-                                                </button>
+                                                
 
                                             </div>
 
@@ -673,7 +640,8 @@ export default function My_bookings() {
                             "
                         >
 
-                            Explore Events →
+                            <NavLink to={'/explore'}>Explore Events →</NavLink>
+
 
                         </button>
 

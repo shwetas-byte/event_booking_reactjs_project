@@ -13,6 +13,7 @@ import Profile from "./assets/components/profile";
 import Booking from "./assets/components/booking";
 import Review from "./assets/components/review";
 import Confirma from "./assets/components/confirm";
+import Setting from "./assets/components/setting";
 
 
 
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/booking" element={<Booking />} />
                 <Route path="/review" element={<Review />} />
                 <Route path="/confirm" element={<Confirma />} />
+                <Route path="/settings" element={<Setting />} />
 
             </Route>
 

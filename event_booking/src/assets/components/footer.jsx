@@ -66,7 +66,7 @@ export function Footer(){
               </li>
 
               <li className="hover:text-[#E07BA8] cursor-pointer">
-                <Link to='/explore' className="hover:text-[#E07BA8] cursor-pointer">
+                <Link to='/' className="hover:text-[#E07BA8] cursor-pointer">
                      Upcoming Events
                 </Link>            
               </li>
@@ -92,7 +92,7 @@ export function Footer(){
               </li>
 
               <li className="hover:text-[#E07BA8] cursor-pointer">
-                <Link to='/home' className="hover:text-[#E07BA8] cursor-pointer">
+                <Link to='/' className="hover:text-[#E07BA8] cursor-pointer">
                      How It Works
                 </Link>
               </li>

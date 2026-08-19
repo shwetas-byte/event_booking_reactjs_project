@@ -6,7 +6,8 @@ import workshop2 from '../image/workshop2.png';
 import workshop3 from '../image/workshop3.png';
 import corporate from '../image/cor.png';
 
-import musicEvent1 from '../image/music1.png';
+import musicEvent1 from '../image/up1.png'
+
 import musicEvent2 from '../image/music2.png';
 import musicEvent3 from '../image/music3.png';
 import musicEvent4 from '../image/music4.png';

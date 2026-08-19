@@ -7,12 +7,16 @@ import trend1 from '../image/trend1.png'
 import trend2 from '../image/trend2.png'
 import trend3 from '../image/trend3.png'
 import up1 from '../image/up1.png'
-import up2 from '../image/up2.png'
-import up3 from '../image/up3.png'
+import adventure1 from '../image/ad1.png';
+import workshop1 from '../image/workshop1.png';
 import g1 from '../image/girl1.jpg'
 import g2 from '../image/girl2.jpg'
 import b1 from '../image/boy1.jpg'
 import sports1 from '../image/sports1.png'
+import musicEvent1 from '../image/music1.png';
+import foodEvent1 from '../image/food1.png';
+
+
 
 
 
@@ -43,9 +47,20 @@ import { GoShieldCheck } from "react-icons/go";
 import { TbUserHeart } from "react-icons/tb";
 import { RiDoubleQuotesL } from "react-icons/ri";
 import { GiRunningShoe } from "react-icons/gi";
+import { Events } from './explore_events'
+import musicEvent2 from '../image/music2.png';
+import sports2 from '../image/sports2.png';
+import musicEvent3 from '../image/music3.png';
+
+
 
 
 export function Home() {
+  const experience = [8, 1, 26, 4]
+  .map((id) => Events.find((event) => event.id === id))
+  .filter(Boolean);
+
+
   let category=[
     {icons:<GiDiamondRing/>,value:'Weddings'},
     {icons:<PiCheersBold/>,value:'Parties'},
@@ -59,71 +74,13 @@ export function Home() {
     // {icons:<FaPeopleGroup/>,value:'Family'},
   ]
 
-  let experience=[
-    {
-      number:'01',
-     icon:<GiRunningShoe/>,
-     category:"Sports",
-     title:"Marathon with your city people.",
-     image:sports1,
-     
-    },
+  
 
-    {
-      number:'02',
-      icon:<FaMusic/>,
-      category:"Music",
-      title:"Live the rhythm. Feel the moment.",
-      image:music
-    },
+  const trending = [10, 17, 14]
+  .map((id) => Events.find((event) => event.id === id))
+  .filter(Boolean);
 
-    {
-      number:'03',
-      icon:<MdBusinessCenter/>,
-      category:"Workshop",
-      title:"Inspire ideas. Drive the future.",
-      image:corporate
-    },
 
-    {
-      number:'04',
-      icon:< GiHotMeal/>,
-      category:"Food & Drinks",
-      title:"The Culinary Experience.",
-      image:dinning
-    }
-  ]
-
-  let trending=[
-    {
-      title:"Midnight Glow",
-      category:"Music",
-      date:"Sat, 12 SEP",
-      time:"7:00 PM Onwards",
-      venue:"Bhopal",
-      image:trend1
-    },
-    {
-      title:"After Dark Sessions",
-      category:"Nightlife",
-      date:"Fri, 18 SEP",
-      time:"9:00 PM Onwards",
-      venue:"Indore",
-      icon:<FaGlassMartiniAlt/>,
-      image:trend2
-    },
-    {
-              
-              title:"Indie Rock Nights",
-              category:"Music",
-              date:"TUE, 20 Oct",
-              time:"7:30 PM Onwards",
-              venue:"Bhopal",
-              icon:<GiDrumKit/>,
-              image:trend3
-            }
-  ]
- 
   let steps=[
     {
       number: '01',
@@ -171,36 +128,9 @@ export function Home() {
     }
   ]
 
-  let upcoming=[
-    {
-      image:up1,
-      category:"Music",
-      title:"Midnight Music Festival",
-      description:"Experience an unforgettable night of live music, art installations, and premium hospitality under the stars.",
-      location:'Bhopal',
-      date:"12",
-      month:"SEP"
-    },
-    {
-      image:up2,
-      category:"Workshop",
-      title:"Creative Art Workshop",
-      description:"Ignite your creativity with hands-on sessions led by renowned contemporary artists in an inspiring setting.",
-      location:'Indore',
-      date:"02",
-      month:"SEP"   
-    },
-    {
-      image:up3,
-      category:"Adventure",
-      title:" Weekend Escape",
-      description:"Embark on curated outdoor experiences, including guided treks, exclusive camping, and wellness activities.",
-      location:'Pachmarhi',
-      date:"15",
-      month:"SEP"
-    }
- ]
-
+  let upcoming=[1,2,6]
+  .map((id)=> Events.find((event)=>event.id === id))
+  .filter(Boolean)
  let test=[
   {
     id:'2',
@@ -322,152 +252,305 @@ export function Home() {
       {/* Featured Experiences */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
-          <h1 className='text-center text-pink-400 pt-10 text-2xl'>Featured Experiences</h1>
-          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
-              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
-              
-              <span class="text-[#db2777] text-xs">✦</span>
-              
-              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
-            </div>
+  <h1 className='text-center text-pink-400 pt-10 text-2xl'>
+    Featured Experiences
+  </h1>
 
-          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Experience Life's</span>  Finest Ocassions</h1>
+  <div className="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
 
-          <div className='pl-20 pt-15 pr-10 space-y-8'>
-            {
-              experience.map((e,index)=>(
-                <div key={e.number}>
-                  <div className={`grid grid-cols-2 gap-10 items-center ${index%2!==0?"[&>*:first-child]:order-2":""}`}>
+    <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
 
-                    <div className='h-[250px] group relative overflow-hidden rounded-3xl'>
+    <span className="text-[#db2777] text-xs">✦</span>
 
-                      <img src={e.image} alt={e.category} className='w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ' />
+    <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
 
-                      <div className='absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100'></div>
+  </div>
 
-                    </div>
 
-                    <div className='relative'>
+  <h1 className="text-center text-4xl text-pink-400">
 
-                      <div className='flex items-center gap-2 text-[#E07BA8] mb-5'>
-                        <span className='text-2xl'>{e.icon}</span>
-                        <span className='text-lg'>{e.category}</span>
-                      </div>
+    <span className="text-white mb-3">
+      Experience Life's
+    </span>{" "}
+    Finest Ocassions
 
-                      <h2 className='text-white text-4xl font-semibold leading-tight max-w-md'> {e.title}</h2>
+  </h1>
 
-                      <button className='group flex items-center gap-2 mt-8 text-[#E07BA8]'> View Details <FaArrowRight className='transition-transform duration-300 group-hover:translate-x-1 group:hover:-translate-y-1'/></button>
 
-                      <span className='absolute right-0 -bottom-6 text-8xl font-bold text-pink-500/20'> {e.number}</span>
+  <div className="pl-20 pt-15 pr-10 space-y-8">
 
-                    </div>
+    {experience.map((e, index) => (
 
-                  </div>
-                </div>
-              ))
-            }
+      <div key={e.id}>
+
+        <div
+          className={`grid grid-cols-2 gap-10 items-center ${
+            index % 2 !== 0
+              ? "[&>*:first-child]:order-2"
+              : ""
+          }`}
+        >
+
+          {/* IMAGE */}
+
+          <div className="h-[250px] group relative overflow-hidden rounded-3xl">
+
+            <img
+              src={e.image}
+              alt={e.category}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+
+            <div className="absolute inset-0 bg-black/30 opacity-0 transition-opacity duration-500 group-hover:opacity-100"></div>
 
           </div>
-          
+
+
+          {/* CONTENT */}
+
+          <div className="relative">
+
+            <div className="flex items-center gap-2 text-[#E07BA8] mb-5">
+
+              <span className="text-2xl">
+                {e.icon}
+              </span>
+
+              <span className="text-lg">
+                {e.category}
+              </span>
+
+            </div>
+
+
+            <h2 className="text-white text-4xl font-semibold leading-tight max-w-md">
+              {e.title}
+            </h2>
+
+
+            <button className="group flex items-center gap-2 mt-8 text-[#E07BA8]">
+
+              <NavLink to={`/view/${e.id}`}>View Details</NavLink>
+
+              <FaArrowRight
+                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
+
+            </button>
+
+
+            <span className="absolute right-0 -bottom-6 text-8xl font-bold text-pink-500/20">
+              {String(e.id).padStart(2, "0")}
+            </span>
+
+          </div>
+
         </div>
+
+      </div>
+
+    ))}
+
+  </div>
+
+</div>
         
         {/* Trending */}
         <div className='bg-zinc-950 pb-20 w-full'>
 
-          <h1 className='text-center text-pink-400  text-2xl'>What's Hot Right Now</h1>
-          <div class="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
-              <div class=" h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
-              
-              <span class="text-[#db2777] text-xs">✦</span>
-              
-              <div class="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
-            </div>
+  <h1 className='text-center text-pink-400 text-2xl'>
+    What's Hot Right Now
+  </h1>
 
-          <h1 className='text-center  text-4xl  text-pink-400'> <span className='text-white mb-3'>Trending Events</span>  Near You</h1>
+  <div className="flex items-center justify-center gap-3 my-2 ml-157 w-3xs">
 
+    <div className="h-[2px] flex-1 bg-gradient-to-r from-transparent to-[#db2777]"></div>
 
-          <div className="pl-20 pr-15 pt-15 grid grid-cols-2 gap-6">
+    <span className="text-[#db2777] text-xs">
+      ✦
+    </span>
 
-  
-      {trending.slice(0, 1).map((e) => (
-        <div className="relative h-[620px] rounded-3xl overflow-hidden group" >
-          <img src={e.image} alt={e.title} className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+    <div className="h-[2px] flex-1 bg-gradient-to-l from-transparent to-[#db2777]"></div>
+
+  </div>
 
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
+  <h1 className='text-center text-4xl text-pink-400'>
 
-          
-          <div className="absolute inset-0 flex flex-col justify-end p-8">
+    <span className='text-white mb-3'>
+      Trending Events
+    </span>{" "}
+    Near You
 
-            <p className="text-[#E07BA8] items-center gap-2 flex text-lg  mb-2">
-              <FaMusic/>{e.category}
-            </p>
+  </h1>
 
-            <h2 className="text-white text-5xl flex  mb-4">
-              {e.title}
-            </h2>
 
-            <p className="text-white/70 flex  items-center gap-2 text-sm">
-              <IoCalendarOutline/> {e.date}  | <IoMdTime />{e.time}
-            </p>
+  <div className="pl-20 pr-15 pt-15 grid grid-cols-2 gap-6">
 
-            <p className="text-white/60 flex gap-2 pt-2 text-sm mt-1">
-            <IoLocationOutline/>  {e.venue}
-            </p>
 
-            <button className="text-[#E07BA8] flex items-center gap-2 mt-5 w-fit">
-              View Experience
-              <FaArrowRight />
-            </button>
+    {/* BIG EVENT */}
 
-          </div>
+    {trending.slice(0, 1).map((e) => (
+
+      <div
+        key={e.id}
+        className="relative h-[620px] rounded-3xl overflow-hidden group"
+      >
+
+        <img
+          src={e.image}
+          alt={e.title}
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        />
+
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/30 to-transparent"></div>
+
+
+        <div className="absolute inset-0 flex flex-col justify-end p-8">
+
+          <p className="text-[#E07BA8] items-center gap-2 flex text-lg mb-2">
+
+            {e.icon}
+
+            {e.category}
+
+          </p>
+
+
+          <h2 className="text-white text-5xl flex mb-4">
+            {e.title}
+          </h2>
+
+
+          <p className="text-white/70 flex items-center gap-2 text-sm">
+
+            <IoCalendarOutline />
+
+            {e.date}
+
+            |
+
+            <IoMdTime />
+
+            {e.time}
+
+          </p>
+
+
+          <p className="text-white/60 flex gap-2 pt-2 text-sm mt-1">
+
+            <IoLocationOutline />
+
+            {e.venue}
+
+          </p>
+
+
+          <NavLink
+            to={`/view/${e.id}`}
+            className="text-[#E07BA8] flex items-center gap-2 mt-5 w-fit"
+          >
+
+            View Experience
+
+            <FaArrowRight />
+
+          </NavLink>
+
         </div>
-      ))}
-
-      <div className="grid grid-rows-2 gap-6">
-
-        {trending.slice(1).map((e) => (
-          <div className="grid grid-cols-2 h-[297px] rounded-3xl overflow-hidden bg-[#111114] group">
-
-          
-            <div className="relative overflow-hidden">
-              <img  src={e.image}  alt={e.title}  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"  />
-            </div>
-
-
-            <div className="relative flex flex-col justify-center p-7">
-
-              <p className="text-[#E07BA8] items-center flex gap-2 text-lg mb-3">
-              {e.icon} {e.category}
-              </p>
-
-              <h2 className="text-white text-3xl font-serif leading-tight mb-4">
-                {e.title}
-              </h2>
-
-              <p className="text-white/70 flex gap-2 items-center text-xs mb-1">
-              <IoCalendarOutline/>  {e.date} | <IoMdTime /> {e.time}
-              </p>
-
-              <p className="text-white/50 flex gap-2 items-center text-xs mb-5">
-              <IoLocationOutline/>   {e.venue}
-              </p>
-
-              <button className="text-[#E07BA8] flex items-center gap-2 text-sm w-fit">
-                View Experience  <FaArrowRight />
-              </button>
-
-            </div>
-
-          </div>
-        ))}
 
       </div>
 
-    </div>
+    ))}
 
+
+    {/* SMALL EVENTS */}
+
+    <div className="grid grid-rows-2 gap-6">
+
+      {trending.slice(1).map((e) => (
+
+        <div
+          key={e.id}
+          className="grid grid-cols-2 h-[297px] rounded-3xl overflow-hidden bg-[#111114] group"
+        >
+
+
+          <div className="relative overflow-hidden">
+
+            <img
+              src={e.image}
+              alt={e.title}
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+
+          </div>
+
+
+          <div className="relative flex flex-col justify-center p-7">
+
+            <p className="text-[#E07BA8] items-center flex gap-2 text-lg mb-3">
+
+              {e.icon}
+
+              {e.category}
+
+            </p>
+
+
+            <h2 className="text-white text-3xl font-serif leading-tight mb-4">
+
+              {e.title}
+
+            </h2>
+
+
+            <p className="text-white/70 flex gap-2 items-center text-xs mb-1">
+
+              <IoCalendarOutline />
+
+              {e.date}
+
+              |
+
+              <IoMdTime />
+
+              {e.time}
+
+            </p>
+
+
+            <p className="text-white/50 flex gap-2 items-center text-xs mb-5">
+
+              <IoLocationOutline />
+
+              {e.venue}
+
+            </p>
+
+
+            <NavLink
+              to={`/view/${e.id}`}
+              className="text-[#E07BA8] flex items-center gap-2 text-sm w-fit"
+            >
+
+              View Experience
+
+              <FaArrowRight />
+
+            </NavLink>
+
+          </div>
 
         </div>
+
+      ))}
+
+    </div>
+
+  </div>
+
+</div>
 
         {/* Work Flow */}
         <div className='bg-zinc-950 pb-20 w-full'>
@@ -618,10 +701,14 @@ export function Home() {
                     </p>
 
                     <p className='text-sm flex justify-between items-center text-white/90 mb-2'>
-                      <span className='flex gap-1 items-center'>
-                        <IoLocationOutline className='text-[#B65C75]'/> {e.location}
-                      </span>
-                      <span className='text-[#B65C75] border-b  flex gap-2 items-center '>View Details <FaArrowRight/></span>
+                      <NavLink
+                to={`/view/${e.id}`}
+                className='text-[#B65C75] border-b flex gap-2 items-center hover:text-[#E07BA8] transition'
+              >
+                View Details
+                <FaArrowRight />
+              </NavLink>
+                      
                     </p>
                   </div>
 
@@ -714,7 +801,7 @@ export function Home() {
 
             <p className='text-white/60  text-center text-lg leading-7 tracking-wider pt-2'> Explore handpicked events and unique experiences <br /> crafted to make every moments extraordinary.</p>
 
-            <button className='bg-[#c43475] mt-9 rounded-2xl border border-white/20 mx-auto pl-8 pr-8 pt-3 pb-3 gap-2 justify-center text-white text-2xl  flex items-center transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E07BA8]/50 hover:shadow-[0_8px_25px_rgba(224,123,168,0.1)]'>Explore Events <FaArrowRight/></button>
+            <button className='bg-[#c43475] mt-9 rounded-2xl border border-white/20 mx-auto pl-8 pr-8 pt-3 pb-3 gap-2 justify-center text-white text-2xl  flex items-center transition-all duration-300 ease-out hover:-translate-y-1 hover:border-[#E07BA8]/50 hover:shadow-[0_8px_25px_rgba(224,123,168,0.1)]'><NavLink to={'/explore'}>Explore Events</NavLink><FaArrowRight/></button>
             
           </div>
         </div>
